@@ -1,0 +1,20 @@
+<mat-sidenav-container fullscreen>
+  <mat-sidenav mode="side" #sidenav opened position="start" [ngStyle]="{width: '250px'}" >
+    <span>Examen</span>
+      <mat-nav-list>
+        <mat-list-item routerLink="">
+          <mat-icon mat-list-icon>home</mat-icon> Empleados
+        </mat-list-item>
+
+        <mat-list-item routerLink="area/list">
+          <mat-icon mat-list-icon>settings</mat-icon> Área
+        </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-menu-app></app-menu-app>
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

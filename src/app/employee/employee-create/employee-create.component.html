@@ -1,0 +1,47 @@
+<h1 mat-dialog-title>Crear empleado</h1>
+
+<form [formGroup]="form" (ngSubmit)="onConfirm()">
+  <div mat-dialog-content>
+    <div class="parent">
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input type="text" formControlName="name" matInput />
+        <mat-error *ngIf="form?.invalid">{{ getErrorName() }}</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline">
+        <mat-label>Correo electrónico</mat-label>
+        <input type="text" formControlName="email" matInput />
+        <mat-error *ngIf="form?.invalid">{{ getErrorEmail() }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Número de teléfono</mat-label>
+        <input type="text" formControlName="phoneNumber" matInput />
+        <mat-error *ngIf="form?.invalid">{{ getErrorPhoneNumber() }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Área</mat-label>
+        <mat-select formControlName="areaId">
+          <mat-option>--</mat-option>
+          @for (areaItem of areaList; track areaItem) {
+            <mat-option [value]="areaItem.id">{{areaItem.name}}</mat-option>
+          }
+
+        </mat-select>
+        <mat-error *ngIf="form?.invalid">{{ getErrorArea() }}</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div mat-dialog-actions align="end">
+    <button mat-button type="button" (click)="onCancel()">Cancelar</button>
+    <span class="spacer"></span>
+    <button mat-raised-button [disabled]="apiLoading || form.invalid" color="primary">
+      <mat-icon  *ngIf="apiLoading"><mat-spinner color="primary" diameter="18">
+      </mat-spinner></mat-icon>
+      Guardar
+     </button>
+  </div>
+</form>

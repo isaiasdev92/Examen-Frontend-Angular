@@ -1,0 +1,15 @@
+.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+mat-form-field {
+  width: 100%;
+  max-width: 500px;
+}
+
+button {
+  margin-right: 1rem;
+}

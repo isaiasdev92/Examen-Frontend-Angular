@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>Crear área</h1>
+
+<form [formGroup]="form" (ngSubmit)="onConfirm()">
+  <div mat-dialog-content>
+    <div class="parent">
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input type="text" formControlName="name" matInput />
+        <mat-error *ngIf="form?.invalid">{{ getErrorName() }}</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline">
+        <mat-label>Descripción</mat-label>
+        <textarea matInput formControlName="description" ></textarea>
+        <mat-error *ngIf="form?.invalid">{{ getErrorDescription() }}</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div mat-dialog-actions align="end">
+    <button mat-button type="button" (click)="onCancel()">Cancelar</button>
+    <span class="spacer"></span>
+    <!-- <button mat-button color="primary" [disabled]="form.invalid">
+      Guardar cambios
+    </button> -->
+
+    <button mat-raised-button [disabled]="apiLoading || form.invalid" color="primary">
+      <mat-icon  *ngIf="apiLoading"><mat-spinner color="primary" diameter="18">
+      </mat-spinner></mat-icon>
+      Guardar
+     </button>
+  </div>
+</form>
